@@ -8,8 +8,6 @@ function App() {
   return (
     <div className="App">
       <h1>ravenous</h1>
-      <img src={logo} className="App-logo" alt="logo" />
-
       <SearchBar />
       <BusinessList />
     </div>
