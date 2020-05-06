@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import './Business.css'
 
 //hardcoding a business before using the Yelp API
 const business = {
