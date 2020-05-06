@@ -1,5 +1,5 @@
 import React from 'react';
-import './Business.css'
+import './Business.css';
 
 //hardcoding a business before using the Yelp API
 const business = {
@@ -39,3 +39,4 @@ class Business extends React.Component {
     }
 }
 
+export default Business;
