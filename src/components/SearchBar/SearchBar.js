@@ -7,6 +7,7 @@ class SearchBar extends React.Component{
         this.state = { term: '', location: '', sortBy: 'best_match' };
         this.handleTermChange = this.handleTermChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
         this.sortByOptions = {
             'Best Match': 'best_match',
             'Highest Rated': 'rating',
@@ -30,12 +31,17 @@ class SearchBar extends React.Component{
         this.setState({location: event.target.value});
     }
 
+    handleSearch(event){ //prints message with search parameters when let's go button is clicked
+        this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+        event.preventDefault(); //prevents the default action of clicking a link from triggering at the end of the method
+    }
+
     renderSortByOptions(){ //dynamically creates list items needed to display sort options
         return Object.keys(this.sortByOptions).map(sortByOption => {
             let sortByOptionValue = this.sortByOptions[sortByOption];
-            return (<li 
+            return(<li 
+                key={sortByOptionValue}
                 onClick={this.handleSortByChange.bind(this,sortByOptionValue)} //binds the current value of this and binds the current sortByOptionValue
-                key="{sortByOptionValue}" 
                 className={this.getSortByClass(sortByOptionValue)}>
                 {sortByOption}</li> //styles sort by option, displays to user current selected sort
             );
@@ -55,7 +61,7 @@ class SearchBar extends React.Component{
                     <input onChange={this.handleLocationChange} placeholder="Where?" />
                 </div>
                 <div className="SearchBar-submit">
-                    <a>Let's Go</a>
+                    <a onClick={this.handleSearch}>Let's Go</a>
                 </div>
             </div>
         );
