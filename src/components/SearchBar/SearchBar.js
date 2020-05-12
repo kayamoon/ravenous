@@ -8,6 +8,7 @@ class SearchBar extends React.Component{
         this.handleTermChange = this.handleTermChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
         this.sortByOptions = {
             'Best Match': 'best_match',
             'Highest Rated': 'rating',
@@ -29,6 +30,13 @@ class SearchBar extends React.Component{
 
     handleLocationChange(event){
         this.setState({location: event.target.value});
+    }
+
+    handleKeyDown(event){
+        if(event.keyCode === 13){
+            this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+            event.preventDefault(); //prevents the default action of clicking a link from triggering at the end of the method
+        }
     }
 
     handleSearch(event){ //prints message with search parameters when let's go button is clicked
@@ -57,8 +65,8 @@ class SearchBar extends React.Component{
                     </ul>
                 </div>
                 <div className="SearchBar-fields">
-                    <input onChange={this.handleTermChange} placeholder="Search Businesses" />
-                    <input onChange={this.handleLocationChange} placeholder="Where?" />
+                    <input onChange={this.handleTermChange} onKeyDown={this.handleKeyDown} placeholder="Search Businesses" />
+                    <input onChange={this.handleLocationChange} onKeyDown={this.handleKeyDown} placeholder="Where?" />
                 </div>
                 <div className="SearchBar-submit">
                     <a onClick={this.handleSearch}>Let's Go</a>
