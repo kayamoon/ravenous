@@ -15,7 +15,7 @@ Allows user to:
 
 ### Configure app
 
-Copy `config.js.example` to `config.js` then edit it with the url where you have setup the Yelp API key.
+Copy `config.js.example` to `config.js` then edit it with your Yelp API key.
 
 ## Start & watch
 
