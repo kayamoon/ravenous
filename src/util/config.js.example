@@ -1,3 +1,5 @@
 const config = {
     YELP_API_KEY : '' //set variable equal to your Yelp API key
 }
+
+export default config;
